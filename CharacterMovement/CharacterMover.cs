@@ -14,11 +14,12 @@ public class CharacterMover : MonoBehaviour
 
   void Start()
   {
-    isMovingForward = (Input.GetKey(KeyCode.W));
+    rb.freezeRotation = true
   }
 
   void FixedUpdate()
   {
+    isMovingForward = (Input.GetKey(KeyCode.W));
     if isMovingForward
     {
       Vector3 cameraForward = cameraTransform.forward;
