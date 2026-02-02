@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CharacterRotation : MonoBehavior
+public class CharacterRotation : MonoBehaviour
 {
   [Header("references")]
   public Transform playerObj;
