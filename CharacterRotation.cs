@@ -38,6 +38,10 @@ public class CharacterRotation : MonoBehavior
       cameraForward.Normalize();
 
       Vector3 moveDir = cameraForward * inputDirection.z + cameraTransform.right * inputDirection.x;
+      
+      Quaternion targetRotation = Quaternion.LookRotation(moveDirection);
+      playerBody.rotation = Quaternion.Slerp(playerBody.rotation, targetRotation, bodyRotationSpeed * Time.deltaTime);
+      // if everything is correct this should get my player to rotate in the direction needed.
     }
   }
 
