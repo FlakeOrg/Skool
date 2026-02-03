@@ -29,9 +29,27 @@ public class CharacterMover : MonoBehaviour
       
       Vector3 playerForward = player.forward;
       float playerSpeed = rb.velocity.magnitude;
-      rb.AddForce(cameraForward * speed, ForceMode.VelocityChange);
-      Debug.DrawRay (player.position, playerForward * (2f * playerSpeed), Color.green, 1f);
       
+      if (playerSpeed <= speed)
+      {
+        rb.AddForce(cameraForward * (speed - playerSpeed), ForceMode.VelocityChange);
+      }
+      else
+      {
+        if (playerSpeed >= 25)
+        {
+          rb.freezeRotation = false; // for trying to break the laws of physics
+          speed = 0;
+          Debug.Log("lil bro fell skill issue");
+          Invoke("getUp", 5.0f);
+        }
+      }
+      Debug.DrawRay (player.position, playerForward * (2f * playerSpeed), Color.green, 1f);
+    
     }
+  }
+  void getUp()
+  {
+    
   }
 }
