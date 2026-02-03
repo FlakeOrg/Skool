@@ -10,7 +10,7 @@ public class CharacterMover : MonoBehaviour
   [Header("Speed and other stuff")]
   public float speed = 2f;
   private bool isMovingForward;
-  private float playerSpeed
+  private float playerSpeed;
   void Start()
   {
 
