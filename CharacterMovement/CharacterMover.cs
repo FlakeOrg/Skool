@@ -44,7 +44,7 @@ public class CharacterMover : MonoBehaviour
           Invoke("getUp", 5.0f);
         }
       }
-      Debug.DrawRay (player.position, playerForward * (2f * playerSpeed), Color.green, 1f);
+      Debug.DrawRay (player.position, cameraForward * (2f * playerSpeed), Color.green, 1f);
     
     }
   }
