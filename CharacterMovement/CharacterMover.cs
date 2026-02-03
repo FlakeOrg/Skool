@@ -17,11 +17,11 @@ public class CharacterMover : MonoBehaviour
   void Update()
   {
     isMovingForward = (Input.GetKey(KeyCode.W));
-    public float playerSpeed = rb.velocity.magnitude;
+    playerSpeed = rb.velocity.magnitude;
   }
   void FixedUpdate()
   {
-    if isMovingForward
+    if (isMovingForward)
     {
       Vector3 cameraForward = cameraTransform.forward;
       cameraForward.y = 0f; // to prevent players from walking on air
