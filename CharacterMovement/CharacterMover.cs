@@ -50,6 +50,7 @@ public class CharacterMover : MonoBehaviour
   }
   void getUp()
   {
-    
+    Debug.Log("gettin up now.");
+    speed = 5;
   }
 }
