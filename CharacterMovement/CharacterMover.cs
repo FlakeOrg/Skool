@@ -11,7 +11,7 @@ public class CharacterMover : MonoBehaviour
   public float jumpForce = 3f;
   public float speed = 10f;
   private bool isMovingForward;
-
+  public float playerSpeed = rb.velocity.magnitude;
   void Start()
   {
     isMovingForward = (Input.GetKey(KeyCode.W));
@@ -26,7 +26,7 @@ public class CharacterMover : MonoBehaviour
       cameraForward.Normalize();
 
       // i am not joking this will literally turn your player into a ROCKET. the only reason why im leaving this in here is because its just funny. we will change this later.
-      rb.AddForce(cameraForward * speed, ForceMode.VelocityChange);
+      rb.AddForce(cameraForward * (speed * playerSpeed), ForceMode.VelocityChange);
     }
   }
 }
