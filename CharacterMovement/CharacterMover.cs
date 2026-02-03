@@ -8,15 +8,17 @@ public class CharacterMover : MonoBehaviour
   public Transform cameraTransform;
   public Rigidbody rb;
   [Header("Speed and other stuff")]
-  public float jumpForce = 3f;
-  public float speed = 10f;
+  public float speed = 2f;
   private bool isMovingForward;
-  public float playerSpeed = rb.velocity.magnitude;
   void Start()
   {
-    isMovingForward = (Input.GetKey(KeyCode.W));
-  }
 
+  }
+  void Update()
+  {
+    isMovingForward = (Input.GetKey(KeyCode.W));
+    public float playerSpeed = rb.velocity.magnitude;
+  }
   void FixedUpdate()
   {
     if isMovingForward
@@ -26,7 +28,7 @@ public class CharacterMover : MonoBehaviour
       cameraForward.Normalize();
 
       // i am not joking this will literally turn your player into a ROCKET. the only reason why im leaving this in here is because its just funny. we will change this later.
-      rb.AddForce(cameraForward * (speed * playerSpeed), ForceMode.VelocityChange);
+      rb.AddForce(cameraForward * (speed * playerSpeed + 2), ForceMode.VelocityChange);
     }
   }
 }
