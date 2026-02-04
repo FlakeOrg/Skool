@@ -29,6 +29,15 @@ public class CharacterMover : MonoBehaviour
     isMovingBackward = (Input.GetKey(KeyCode.S));
     isMovingRight = (Input.GetKey(KeyCode.D));
     isMovingLeft = (Input.GetKey(KeyCode.A));
+
+    if (playerSpeed >= 25 && isDown !false)
+      {
+       isDown = true;
+       rb.freezeRotation = false; // for trying to break the laws of physics
+       speed = 0;
+       Debug.Log("lil bro fell skill issue");
+       Invoke("getUp", 5.0f);
+       }
     if (isMovingForward)
     {
       Vector3 cameraForward = cameraTransform.forward;
@@ -41,17 +50,7 @@ public class CharacterMover : MonoBehaviour
       {
         rb.AddForce(cameraForward * (speed - playerSpeed), ForceMode.VelocityChange);
       }
-      else
-      {
-        if (playerSpeed >= 25 && isDown !false)
-        {
-          isDown = true;
-          rb.freezeRotation = false; // for trying to break the laws of physics
-          speed = 0;
-          Debug.Log("lil bro fell skill issue");
-          Invoke("getUp", 5.0f);
-        }
-      }
+      
       Debug.DrawRay (player.position, cameraForward * (2f * playerSpeed), Color.green, 1f);
     
     }
