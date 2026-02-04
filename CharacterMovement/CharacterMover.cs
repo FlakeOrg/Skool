@@ -37,6 +37,7 @@ public class CharacterMover : MonoBehaviour
        isDown = true;
        rb.freezeRotation = false; // for trying to break the laws of physics
        speed = 0;
+       jumpForce = 0;
        Debug.Log("lil bro fell skill issue");
        Invoke("getUp", 5.0f);
        }
@@ -57,7 +58,10 @@ public class CharacterMover : MonoBehaviour
       Debug.DrawRay (player.position, cameraForward * (2f * playerSpeed), Color.green, 1f);
     
     }
-
+    if (isJumping)
+    {
+      
+    }
     if (isMovingBackward)
     {
       Vector3 cameraBack = -cameraTransform.forward;
@@ -95,5 +99,6 @@ public class CharacterMover : MonoBehaviour
   {
     Debug.Log("gettin up now.");
     speed = 5;
+    jumpForce = 2;
   }
 }
