@@ -7,6 +7,7 @@ public class CharacterMover : MonoBehaviour
   [Header("Refs")]
   public Transform cameraTransform;
   public Rigidbody rb;
+  public Transform player;
   [Header("Speed and other stuff")]
   public float jumpForce = 3f;
   public float speed = 10f;
@@ -14,20 +15,42 @@ public class CharacterMover : MonoBehaviour
 
   void Start()
   {
-    rb.freezeRotation = true
+    rb.freezeRotation = true;
   }
 
   void FixedUpdate()
   {
     isMovingForward = (Input.GetKey(KeyCode.W));
-    if isMovingForward
+    if (isMovingForward)
     {
       Vector3 cameraForward = cameraTransform.forward;
       cameraForward.y = 0f; // to prevent players from walking on air
       cameraForward.Normalize();
-
-      // i am not joking this will literally turn your player into a ROCKET. the only reason why im leaving this in here is because its just funny. we will change this later.
-      rb.AddForce(cameraForward * speed, ForceMode.VelocityChange);
+      
+      Vector3 playerForward = player.forward;
+      float playerSpeed = rb.velocity.magnitude;
+      
+      if (playerSpeed <= speed)
+      {
+        rb.AddForce(cameraForward * (speed - playerSpeed), ForceMode.VelocityChange);
+      }
+      else
+      {
+        if (playerSpeed >= 25)
+        {
+          rb.freezeRotation = false; // for trying to break the laws of physics
+          speed = 0;
+          Debug.Log("lil bro fell skill issue");
+          Invoke("getUp", 5.0f);
+        }
+      }
+      Debug.DrawRay (player.position, cameraForward * (2f * playerSpeed), Color.green, 1f);
+    
     }
+  }
+  void getUp()
+  {
+    Debug.Log("gettin up now.");
+    speed = 5;
   }
 }
