@@ -15,6 +15,7 @@ public class CharacterMover : MonoBehaviour
   private bool isMovingBackward;
   private bool isMovingRight;
   private bool isMovingLeft;
+  private bool isJumping;
   private bool isDown;
 
   void Start()
@@ -29,6 +30,7 @@ public class CharacterMover : MonoBehaviour
     isMovingBackward = (Input.GetKey(KeyCode.S));
     isMovingRight = (Input.GetKey(KeyCode.D));
     isMovingLeft = (Input.GetKey(KeyCode.A));
+    isJumping = (Input.GetKeyDown(KeyCode.Space));
 
     if (playerSpeed >= 25 && isDown !false)
       {
@@ -38,6 +40,7 @@ public class CharacterMover : MonoBehaviour
        Debug.Log("lil bro fell skill issue");
        Invoke("getUp", 5.0f);
        }
+    
     if (isMovingForward)
     {
       Vector3 cameraForward = cameraTransform.forward;
