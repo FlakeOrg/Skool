@@ -60,7 +60,9 @@ public class CharacterMover : MonoBehaviour
     }
     if (isJumping)
     {
-      
+      Vector3 playerUp = player.up;
+      playerUp.Normalize();
+      rb.AddForce(playerUp * jumpForce, ForceMode.VelocityChange);
     }
     if (isMovingBackward)
     {
