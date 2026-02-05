@@ -17,7 +17,8 @@ public class CharacterMover : MonoBehaviour
   private bool isMovingLeft;
   private bool isJumping;
   private bool isDown;
-
+  private bool notMoving;
+  
   void Start()
   {
     rb.freezeRotation = true;
@@ -31,6 +32,8 @@ public class CharacterMover : MonoBehaviour
     isMovingRight = (Input.GetKey(KeyCode.D));
     isMovingLeft = (Input.GetKey(KeyCode.A));
     isJumping = (Input.GetKeyDown(KeyCode.Space));
+    notMoving = (!isMovingLeft && !isMovingForward && !isMovingBackward && !isMovingRight && !isJumping);
+    
     if (isJumping)
       {
         Vector3 playerUp = player.up;
@@ -42,6 +45,11 @@ public class CharacterMover : MonoBehaviour
   
   void FixedUpdate()
   {
+
+    if (notMoving = true)
+    {
+      
+    }
     if (playerSpeed >= 25 && !isDown)
       {
        isDown = true;
