@@ -23,7 +23,7 @@ public class CharacterMover : MonoBehaviour
     rb.freezeRotation = true;
   }
 
-  void FixedUpdate()
+  void Update()
   {
     float playerSpeed = rb.velocity.magnitude;
     isMovingForward = (Input.GetKey(KeyCode.W));
@@ -31,8 +31,18 @@ public class CharacterMover : MonoBehaviour
     isMovingRight = (Input.GetKey(KeyCode.D));
     isMovingLeft = (Input.GetKey(KeyCode.A));
     isJumping = (Input.GetKeyDown(KeyCode.Space));
-
-    if (playerSpeed >= 25 && isDown !false)
+    if (isJumping)
+      {
+        Vector3 playerUp = player.up;
+        playerUp.Normalize();
+        rb.AddForce(playerUp * jumpForce, ForceMode.VelocityChange);
+        isJumping = false;
+      }
+  }
+  
+  void FixedUpdate()
+  {
+    if (playerSpeed >= 25 && !isDown)
       {
        isDown = true;
        rb.freezeRotation = false; // for trying to break the laws of physics
@@ -57,12 +67,6 @@ public class CharacterMover : MonoBehaviour
       
       Debug.DrawRay (player.position, cameraForward * (2f * playerSpeed), Color.green, 1f);
     
-    }
-    if (isJumping)
-    {
-      Vector3 playerUp = player.up;
-      playerUp.Normalize();
-      rb.AddForce(playerUp * jumpForce, ForceMode.VelocityChange);
     }
     if (isMovingBackward)
     {
