@@ -1,12 +1,13 @@
 # Skool.
 Welcome to Skool. Where you go to school. In a unity game.
 ## Overall details
-This is a school sandbox game where you can either be a good student and do the following:
+This is a school sandbox game.
+### You can be a good student and...
 * Chat with other students
 * Go to class
 * Be a teachers pet
 * Get good grades
-...or you could be a bad student and:
+### Or you could be a bad student and...
 * Escape school
 * Explore the school
 * Be a menace
