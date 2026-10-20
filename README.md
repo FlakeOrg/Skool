@@ -15,3 +15,4 @@ This is a school sandbox game.
 Your choice.
 ## Credits
 FlakeOrg, which is me, for pretty much everything so far.
+SKOOL
